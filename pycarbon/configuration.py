@@ -46,7 +46,7 @@ def merge(a: dict, b: dict) -> dict:
 
 class Configuration:
 
-    def __init__(self, directory=None, files=None, environment=None, environments=None):
+    def __init__(self, directory=None, files=None, environment=None, environments=None, exceptions=False):
 
         # the directory we will load from
         self.directory = directory or os.environ.get('CONFIG_DIR')
@@ -82,6 +82,9 @@ class Configuration:
         if self.environment not in self.environments:
             raise ConfigurationEnvironmentError("The environment '{}' is not in environments list: {}".format(self.environment, self.environments))
 
+        # default exception raise configuration
+        self.exceptions = exceptions
+
         self.config_files = []
         self.configs = {}
         self.reload()
@@ -99,7 +102,10 @@ class Configuration:
             # save that environment's config
             self.configs[environment] = baseline
 
-    def get(self, path=None, default=None, environment='development', exceptions=False):
+    def get(self, path=None, default=None, environment='development', exceptions=None):
+
+        if exceptions is None:
+            exceptions = self.exceptions
 
         config = self.configs[environment]
 
