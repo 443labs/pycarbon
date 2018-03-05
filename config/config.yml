@@ -1,0 +1,39 @@
+---
+# demo settings
+production:
+  demo:
+    setting: production-value
+    api-key: MOCK  # real value found in either localhost.yml or secrets.yml
+    url: https://www.yourapp.com
+    list:
+      - apples
+      - oranges
+    localhost-override: some-default
+
+staging:
+  demo:
+    setting: staging-value
+    api-key: fd88f916-166d-49c3-bbe1-0d02f848e827
+    url: https://staging.yourapp.com
+
+development:
+  demo:
+    setting: dev-value
+    api-key: 38b591f5-9079-406e-802d-34a4bb04c16c
+    url: https://dev.yourapp.com
+
+testing:
+  demo:
+    setting: testing-value
+
+---
+# multiple yaml documents are supported
+# will be merged at runtime such that you will find `production.foo` next to `production.demo`
+production:
+  foo: production-value
+
+staging:
+  foo: staging-value
+
+development:
+  foo: dev-value
