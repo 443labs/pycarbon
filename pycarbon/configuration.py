@@ -54,14 +54,24 @@ class Configuration:
             raise ConfigurationError('directory', 'CONFIG_DIR')
 
         # the files we will load
-        self.files = files or os.environ.get('CONFIG_FILES') or ['config.yml', 'localhost.yml', 'secrets.yml']
-        if not self.files:
-            raise ConfigurationError('files', 'CONFIG_FILES')
+        if not files:
+            files = os.environ.get('CONFIG_FILES')
+            files = files.split(' ') if files else None
+
+        if not files:
+            files = ['config.yml', 'localhost.yml', 'secrets.yml']
+
+        self.files = files
 
         # the environments we will support
-        self.environments = environments or os.environ.get('CONFIG_ENVS') or ['production', 'staging', 'development', 'testing']
-        if not self.environments:
-            raise ConfigurationError('environments', 'CONFIG_ENVS')
+        if not environments:
+            environments = os.environ.get('CONFIG_ENVS')
+            environments = environments.split(' ') if environments else None
+
+        if not environments:
+            environments = ['production', 'staging', 'development', 'testing']
+
+        self.environments = environments
 
         # the current environment
         self.environment = environment or os.environ.get('CONFIG_ENV') or 'development'
@@ -89,21 +99,12 @@ class Configuration:
             # save that environment's config
             self.configs[environment] = baseline
 
-    def _split(self, value, delimiters):
-        pattern = '|'.join(map(re.escape, delimiters))
-        parts = re.split(pattern, value, maxsplit=0)
-        return parts
-
     def get(self, path=None, default=None, environment='development', exceptions=False):
 
         config = self.configs[environment]
 
         if path:
-            # todo:mark support multiple delimiters
-            # keys = self._split(path, delimiters=['.', ':', '/'])
             keys = re.split('[.:/]', path)
-
-            # keys = path.split('.')
             for key in keys:
                 try:
                     # walk down the key path into the config until the last key is found
