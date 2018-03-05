@@ -30,8 +30,12 @@ Kudos and many thanks for allowing me to publish this derived work!
 ```
 from pycarbon import Configuration
 
-# load files from the config directory in your project
-config = Configuration(directory='./config')
+# load files from specified directory
+config = Configuration(directory='/path/to/your/config/files')
+
+# alternatively use environment variables
+os.environ['CONFIG_DIR'] = '/path/to/your/config/files' # or export it
+config = Configuration()
 
 # load a setting
 print(config.get('demo.setting'))

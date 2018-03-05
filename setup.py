@@ -9,6 +9,7 @@ setup(
     author='Mark Belles',
     author_email='markbelles@gmail.com',
     url='https://github.com/evilgeniuslabs/pycarbon',
+    download_url='https://github.com/evilgeniuslabs/pycarbon/archive/1.0.0.tar.gz',
     keywords=['config', 'configuration', 'files', 'yaml', 'yml'],
     install_requires=['pyyaml==3.12']
 )
