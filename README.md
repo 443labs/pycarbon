@@ -16,7 +16,7 @@ This code based upon concepts and original source material from members of Karmi
 
 Kudos and many thanks for allowing me to publish this derived work!
 
-## Key Concepts**
+## Key Concepts
 
 * Environments: [`production`, `staging`, `development`] - Define environments where various settings differ.
 * Files: [`config.yml`, `localhost.yml`, `secrets.yml`] - Define files that allow you to isolate various settings, across environments.
