@@ -1,6 +1,7 @@
 ---
 # demo settings
 production:
+  XKCD_PASSWORD: correct horse battery staple
   demo:
     setting: production-value
     api-key: MOCK  # real value found in either localhost.yml or secrets.yml
