@@ -58,9 +58,13 @@ print(config.get('demo.setting', exception=True))
 print(config.get('demo.setting', default=42))
 
 # use a complex key path to the setting (delimiters supported: comma, slash, colon)
-print(config.get(`yaml.key.path.to.your.setting`))
-print(config.get(`yaml:key:path:to:your:setting`))
-print(config.get(`yaml/key/path/to/your/setting`))
+print(config.get('path.to.your.setting'))
+print(config.get('path:to:your:setting'))
+print(config.get('path/to/your/setting'))
+
+# allow os overrides via environment variables
+# if os.environ['setting'] exists, it will override what is defined in the config. handy for ci/cd or containers.
+print(config.get('path.to.your.setting', allow_os_override=True))
 ```
 
 **Sample Config**
@@ -146,3 +150,4 @@ Why is it called `PyCarbon`? That's a horrible name...
 ## History
 
 * 2018-03-04: Initial release
+* 2018-03-05: Added support for OS environment variable overrides.
