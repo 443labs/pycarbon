@@ -135,7 +135,7 @@ class Configuration:
         if allow_os_override is None:
             allow_os_override = self.allow_os_override
 
-        config = self.configs[environment]
+        config = self.configs[self.environment or environment]
 
         last_key = None
         if path:
