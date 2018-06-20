@@ -4,7 +4,7 @@ setup(
     name='pycarbon',
     packages=find_packages(),
     description='A python module for managing YAML config files across multiple environments and files.',
-    version='1.0.2',
+    version='1.0.3',
     license='MIT',
     author='Mark Belles',
     author_email='markbelles@gmail.com',
