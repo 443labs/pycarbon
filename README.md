@@ -10,11 +10,15 @@ https://pypi.python.org/pypi/pycarbon
  
 PyCarbon is easy to use, highly configurable, and capable of real-world deployment scenarios that balance settings across multiple files and deployed environments. 
 
-## Credits
+## Release History
 
-This code based upon concepts and original source material from members of Karmic Labs, Inc. engineering group. 
+All public releases may be found here: https://pypi.org/manage/project/pycarbon/releases/
 
-Kudos and many thanks for allowing me to publish this derived work!
+* 2018-03-04: v1.0.0: Initial release
+* 2018-03-05: v1.0.1: Bugfixes and additional unit tests.
+* 2018-03-06: v1.0.2: Added support for OS environment variable overrides.
+* 2018-06-20: v1.0.3: Bugfix where values were not loaded correctly when the `configuration.environment` field was set outside of the `get` method.
+* 2018-06-21: v1.0.4: Updated readme.md, release history, and release instructions.
 
 ## Key Concepts
 
@@ -137,16 +141,6 @@ config = Configuration(files=['config.yml`, `localhost.yml`, `secrets.yml`]
 
 Feel free to define your own file hierarchy. The first file in the list is the baseline, the last file is the last one that can override a setting.
 
-## Naming
-
-Why is it called `PyCarbon`? That's a horrible name...
-
-* Naming things is the hardest task in programming. (opinion)
-* There are a lot of modules already listed in PyPi, so I needed something.
-* Carbon is the building block of life as we know. A good configuration system is the bulding block of any application.
-* ...
-* That's all I've got. Open to suggestions!
-
 ## Release Instructions
 
 Releasing to PyPi can be a bit of a hurdle. Here is a summary of the steps required.
@@ -180,12 +174,18 @@ This is unsafe as it uploads over HTTP, sending your username and password in cl
 python3 setup.py sdist upload
 ```
 
-## Release History
+## Naming
 
-All public releases may be found here: https://pypi.org/manage/project/pycarbon/releases/
+Why is it called `PyCarbon`? That's a horrible name...
 
-* 2018-03-04: v1.0.0: Initial release
-* 2018-03-05: v1.0.1: Bugfixes and additional unit tests.
-* 2018-03-06: v1.0.2: Added support for OS environment variable overrides.
-* 2018-06-20: v1.0.3: Bugfix where values were not loaded correctly when the `configuration.environment` field was set outside of the `get` method.
-* 2018-06-21: v1.0.4: Updated readme.md, release history, and release instructions.
+* Naming things is the hardest task in programming. (opinion)
+* There are a lot of modules already listed in PyPi, so I needed something.
+* Carbon is the building block of life as we know. A good configuration system is the bulding block of any application.
+* ...
+* That's all I've got. Open to suggestions!
+
+## Credits
+
+This code based upon concepts and original source material from members of Karmic Labs, Inc. engineering group.
+
+Kudos and many thanks for allowing me to publish this derived work!
