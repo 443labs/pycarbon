@@ -155,19 +155,12 @@ Releasing to PyPi can be a bit of a hurdle. Here is a summary of the steps requi
 * Configure your `~/.pypirc` file with your `username` and `password`
 * Make any code changes you'd like, then increment the version number found within `setup.py`
 
-Releasing to PyPi can be done using a variety of ways (`setuptools` or `twine` are popular approaches).
+Releasing to PyPi can be done using a variety of ways. `twine` https://pypi.org/project/twine/ is the preferred method, as it uses `https` rather than `http` for the uploading.
 
-** Use setuptools**
+*Using twine**
 
-This is my preferred approach.
-```
-# create the source distribution locally and upload
-python3 setup.py sdist upload
-```
+Detailed instructions may be found here: https://pypi.org/project/twine/
 
-** Using setuptools and twine**
-
-This seems to be the recommended approach, although I don't understand why. It appears to be more steps, though I'm likely missing something important.
 ```
 # create the source distribution
 python3 setup.py sdist
@@ -177,6 +170,14 @@ python3 -m pip install twine
 
 # upload the dist folder
 twine upload dist/*
+```
+
+*Use setuptools*
+
+This is unsafe as it uploads over HTTP, sending your username and password in clear text. I do not recommend this approach, as it leaves your credentials open to sniffing.
+```
+# create the source distribution locally and upload
+python3 setup.py sdist upload
 ```
 
 ## Release History
