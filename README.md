@@ -151,7 +151,7 @@ Releasing to PyPi can be a bit of a hurdle. Here is a summary of the steps requi
 
 Releasing to PyPi can be done using a variety of ways. `twine` https://pypi.org/project/twine/ is the preferred method, as it uses `https` rather than `http` for the uploading.
 
-*Using twine**
+*Using twine*
 
 Detailed instructions may be found here: https://pypi.org/project/twine/
 
@@ -166,7 +166,7 @@ python3 -m pip install twine
 twine upload dist/*
 ```
 
-*Use setuptools*
+*Using setuptools*
 
 This is unsafe as it uploads over HTTP, sending your username and password in clear text. I do not recommend this approach, as it leaves your credentials open to sniffing.
 ```
