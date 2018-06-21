@@ -4,7 +4,7 @@ import unittest
 from configuration import Configuration
 
 
-class TestDefaults(unittest.TestCase):
+class TestLoading(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -43,3 +43,20 @@ class TestDefaults(unittest.TestCase):
         assert config.get('demo.setting') == 'dev-value'
         assert config.get('demo:setting') == 'dev-value'
         assert config.get('demo/setting') == 'dev-value'
+
+    def test_get_using_environment_switching(self):
+        config = Configuration() # default environment is development
+
+        # switch environments
+        config.environment = 'production'
+        assert config.get('demo.localhost-override') == 'some-localhost-default' # set in localhost.yml
+        assert config.get('demo.api-key') == 'production-secret' # set in secrets.yml
+        assert config.get('foo') == 'production-value'
+
+        # switch environments
+        config.environment = 'staging'
+        assert config.get('foo') == 'staging-value'
+
+        # switch environments
+        config.environment = 'development'
+        assert config.get('foo') == 'dev-value'

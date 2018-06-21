@@ -147,7 +147,44 @@ Why is it called `PyCarbon`? That's a horrible name...
 * ...
 * That's all I've got. Open to suggestions!
 
-## History
+## Release Instructions
 
-* 2018-03-04: Initial release
-* 2018-03-05: Added support for OS environment variable overrides.
+Releasing to PyPi can be a bit of a hurdle. Here is a summary of the steps required.
+
+* Register for an account on https://pypi.org/
+* Configure your `~/.pypirc` file with your `username` and `password`
+* Make any code changes you'd like, then increment the version number found within `setup.py`
+
+Releasing to PyPi can be done using a variety of ways (`setuptools` or `twine` are popular approaches).
+
+** Use setuptools**
+
+This is my preferred approach.
+```
+# create the source distribution locally and upload
+python3 setup.py sdist upload
+```
+
+** Using setuptools and twine**
+
+This seems to be the recommended approach, although I don't understand why. It appears to be more steps, though I'm likely missing something important.
+```
+# create the source distribution
+python3 setup.py sdist
+
+# install twine (if it isn't already)
+python3 -m pip install twine
+
+# upload the dist folder
+twine upload dist/*
+```
+
+## Release History
+
+All public releases may be found here: https://pypi.org/manage/project/pycarbon/releases/
+
+* 2018-03-04: v1.0.0: Initial release
+* 2018-03-05: v1.0.1: Bugfixes and additional unit tests.
+* 2018-03-06: v1.0.2: Added support for OS environment variable overrides.
+* 2018-06-20: v1.0.3: Bugfix where values were not loaded correctly when the `configuration.environment` field was set outside of the `get` method.
+* 2018-06-21: v1.0.3: Updated readme.md, release history, and release instructions.

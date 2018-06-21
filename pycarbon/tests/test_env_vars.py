@@ -4,7 +4,7 @@ import unittest
 from configuration import Configuration
 
 
-class TestEnvironmentVariableConfiguration(unittest.TestCase):
+class TestEnvironmentVariables(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -20,7 +20,7 @@ class TestEnvironmentVariableConfiguration(unittest.TestCase):
         assert config.environments == ['production', 'staging', 'development', 'testing']
         assert config.files == ['config.yml', 'localhost.yml', 'secrets.yml']
 
-    def test_os_environment_fallback_values(self):
+    def test_environment_variable_overrides(self):
         config = Configuration()
 
         # in most cases a config value is perfect, even with environmental control to determine which env value we use

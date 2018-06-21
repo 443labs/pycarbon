@@ -118,7 +118,7 @@ class Configuration:
             # save that environment's config
             self.configs[environment] = baseline
 
-    def get(self, path=None, default=None, environment='development', exceptions=None, allow_os_override=None):
+    def get(self, path=None, default=None, environment=None, exceptions=None, allow_os_override=None):
         """
         Returns a value from the configuration, given the current environment.
         :param path: The path identifying the setting.
@@ -135,7 +135,8 @@ class Configuration:
         if allow_os_override is None:
             allow_os_override = self.allow_os_override
 
-        config = self.configs[self.environment or environment]
+        env = environment or self.environment
+        config = self.configs[env] # select the config for the choosen environment
 
         last_key = None
         if path:
@@ -163,7 +164,7 @@ class Configuration:
         # value or default
         return value if value is not None else default
 
-    def _build_config(self, environment='development', baseline=None):
+    def _build_config(self, environment, baseline=None):
 
         # clone baseline
         config = merge({}, baseline)
