@@ -20,6 +20,7 @@ All public releases may be found here: https://pypi.org/manage/project/pycarbon/
 * 2018-06-20: v1.0.3: Bugfix where values were not loaded correctly when the `configuration.environment` field was set outside of the `get` method.
 * 2018-06-21: v1.0.4: Updated readme.md, release history, and release instructions.
 * 2018-09-05: v1.0.5: Require PyYAML>=3.12 rather than PyYAML==3.12 to compensate for incompatible dependencies in larger projects.
+* 2018-09-05: v1.0.6: Updated setup.py to require PyYAML>=3.12 rather than PyYAML==3.12.
 
 ## Key Concepts
 
