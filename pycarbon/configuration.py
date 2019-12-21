@@ -19,7 +19,7 @@ class ConfigurationError(ValueError):
 
 def load_config_file(file):
     with open(file, 'r') as stream:
-        for data in yaml.load_all(stream):
+        for data in yaml.load_all(stream=stream, Loader=yaml.FullLoader):
             yield data
 
 
